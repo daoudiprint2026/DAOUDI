@@ -22,7 +22,6 @@
             direction: rtl;
         }
 
-        /* حاوية موقع واسعة واحترافية */
         .site-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -31,7 +30,6 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
 
-        /* غلاف الحساب والبروفايل على طريقة تويتر وإنستغرام */
         .profile-banner {
             height: 180px;
             background: var(--instagram-gradient);
@@ -86,7 +84,6 @@
         .profile-info .handle { color: #536471; margin: 3px 0 10px 0; font-size: 1rem; }
         .profile-bio { font-size: 1.05rem; line-height: 1.6; color: #0f1419; max-width: 800px; }
 
-        /* شريط التبويبات الفسيح */
         .nav-tabs {
             display: flex;
             border-bottom: 2px solid var(--border-color);
@@ -124,7 +121,6 @@
         .tab-content { display: none; padding: 25px; }
         .tab-content.active { display: block; }
 
-        /* عرض المنتجات والأسعار بطريقة غنية وجذابة */
         .feed-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -159,7 +155,6 @@
             display: inline-block;
         }
 
-        /* قسم الاتصال المكتمل ونموذج المراسلة المتقدم */
         .contact-section {
             background: #f8fafc;
             padding: 35px 25px;
@@ -190,7 +185,6 @@
         }
         .phone-link:hover { background: #f1f5f9; border-color: var(--twitter-blue); }
 
-        /* تصميم استمارة المراسلة */
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
         .form-group input, .form-group textarea {
@@ -200,14 +194,12 @@
             background: var(--instagram-gradient); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; font-size: 1rem;
         }
 
-        /* أزرار التواصل العائمة في الأسفل */
         .floating-actions {
             position: fixed; bottom: 20px; left: 20px; display: flex; gap: 10px; z-index: 999;
         }
         .action-wa { background-color: #25D366; color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
         .action-ai { background-color: var(--twitter-blue); color: white; padding: 12px 24px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(29,155,240,0.3); }
 
-        /* نافذة المساعد الذكي */
         .ai-window {
             position: fixed; bottom: 80px; left: 20px; width: 340px; height: 400px; background: white; border-radius: 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); display: none; flex-direction: column; z-index: 1000; border: 1px solid var(--border-color); overflow: hidden;
         }
@@ -224,7 +216,6 @@
 <body>
 
     <div class="site-wrapper">
-        <!-- غلاف حساب إنستغرام وتويتر المدمج -->
         <div class="profile-banner"></div>
         
         <div class="profile-header">
@@ -244,8 +235,15 @@
             </div>
         </div>
 
-        <!-- أزرار الأقسام الفسيحة للتنقل -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="openTab('commercial')">المطبوعات التجارية</button>
             <button class="tab-btn" onclick="openTab('signage')">اللوحات واللافتات</button>
             <button class="tab-btn" onclick="openTab('packaging')">التغليف والعلب الفاخرة</button>
+        </div>
+
+        <div id="commercial" class="tab-content active">
+            <div class="feed-grid">
+                <div class="post-card">
+                    <img src="https://unsplash.com" alt="كارت فيزيت">
+                    <div class="post-content">
+                        <h3>كروت عمل فاخرة (Business Cards)</h3>
