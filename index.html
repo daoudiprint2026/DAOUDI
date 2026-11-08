@@ -3,100 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daoudi Print | مطبعة الداودي</title>
+    <title>Daoudi Print | مطبعة الداودي بمراكش</title>
     <style>
         :root {
             --twitter-blue: #1d9bf0;
-            --twitter-bg: #ffffff;
-            --twitter-border: #eff3f4;
-            --twitter-text: #0f1419;
-            --twitter-gray: #536471;
-            --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --twitter-dark: #0f1419;
+            --instagram-gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            --bg-light: #f8fafc;
+            --border-color: #e2e8f0;
         }
 
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             margin: 0; 
             padding: 0; 
-            background-color: #f7f9f9; 
-            color: var(--twitter-text); 
+            background-color: var(--bg-light); 
+            color: var(--twitter-dark);
             direction: rtl;
         }
 
-        /* حاوية التطبيق المركزية - تشبه واجهة الهاتف */
-        .app-container {
-            max-width: 600px;
+        /* حاوية موقع واسعة واحترافية */
+        .site-wrapper {
+            max-width: 1200px;
             margin: 0 auto;
-            background: var(--twitter-bg);
+            background: #ffffff;
             min-height: 100vh;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-            border-left: 1px solid var(--twitter-border);
-            border-right: 1px solid var(--twitter-border);
-            padding-bottom: 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
 
-        /* بروفايل المطبعة على طريقة إنستغرام وتويتر */
+        /* غلاف الحساب والبروفايل على طريقة تويتر وإنستغرام */
+        .profile-banner {
+            height: 180px;
+            background: var(--instagram-gradient);
+        }
+
         .profile-header {
-            border-bottom: 1px solid var(--twitter-border);
-            padding: 20px 15px;
+            padding: 0 30px 20px 30px;
             text-align: right;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
             background: #ffffff;
         }
-        
-        .profile-top {
+
+        .profile-avatar-wrapper {
             display: flex;
-            align-items: center;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: -60px;
             margin-bottom: 15px;
         }
 
         .profile-avatar {
-            width: 80px;
-            height: 80px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #0f172a, #2563eb);
+            background: #0f172a;
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 1.5rem;
-            border: 2px solid #fff;
-            box-shadow: 0 0 0 2px #1d9bf0;
-            flex-shrink: 0;
+            font-size: 2.2rem;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .profile-info h1 {
-            margin: 0;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .social-links-top a {
+            display: inline-block;
+            margin-right: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: white;
         }
-        
-        /* شارة التوثيق الزرقاء */
-        .verified-badge {
-            color: var(--twitter-blue);
-            font-size: 1.2rem;
-        }
+        .link-ig { background: var(--instagram-gradient); }
+        .link-tw { background: var(--twitter-blue); }
 
-        .profile-info p {
-            margin: 5px 0 0 0;
-            color: var(--twitter-gray);
-            font-size: 0.95rem;
-        }
+        .profile-info h1 { margin: 0; font-size: 1.8rem; display: flex; align-items: center; gap: 8px; }
+        .verified-badge { color: var(--twitter-blue); font-size: 1.4rem; }
+        .profile-info .handle { color: #536471; margin: 3px 0 10px 0; font-size: 1rem; }
+        .profile-bio { font-size: 1.05rem; line-height: 1.6; color: #0f1419; max-width: 800px; }
 
-        .profile-bio {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: var(--twitter-text);
-            margin-top: 10px;
-        }
-
-        /* أزرار التنقل والتبويبات السريعة */
+        /* شريط التبويبات الفسيح */
         .nav-tabs {
             display: flex;
-            border-bottom: 1px solid var(--twitter-border);
+            border-bottom: 2px solid var(--border-color);
             background: #ffffff;
             position: sticky;
             top: 0;
@@ -107,230 +100,152 @@
             flex: 1;
             background: none;
             border: none;
-            padding: 15px 0;
-            font-size: 0.95rem;
+            padding: 18px 0;
+            font-size: 1.1rem;
             font-weight: bold;
-            color: var(--twitter-gray);
+            color: #536471;
             cursor: pointer;
-            text-align: center;
             transition: 0.2s;
             position: relative;
         }
 
-        .tab-btn.active {
-            color: var(--twitter-text);
-        }
-
+        .tab-btn.active { color: var(--twitter-dark); }
         .tab-btn.active::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 20%;
-            right: 20%;
+            left: 25%;
+            right: 25%;
             height: 4px;
             background-color: var(--twitter-blue);
             border-radius: 2px;
         }
 
-        /* محتوى التايملاين والمنشورات */
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
+        .tab-content { display: none; padding: 25px; }
+        .tab-content.active { display: block; }
+
+        /* عرض المنتجات والأسعار بطريقة غنية وجذابة */
+        .feed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 15px;
         }
 
-        /* تصميم منشور إنستغرام/تويتر الاحترافي */
         .post-card {
-            border-bottom: 1px solid var(--twitter-border);
             background: #ffffff;
-            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            text-align: right;
+            transition: 0.3s;
+        }
+        .post-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+
+        .post-card img { width: 100%; height: 230px; object-fit: cover; }
+        
+        .post-content { padding: 20px; }
+        .post-content h3 { margin: 0 0 10px 0; color: #1e3a8a; font-size: 1.3rem; }
+        .post-content p { margin: 0 0 15px 0; color: #475569; font-size: 0.95rem; line-height: 1.6; }
+        
+        .price-tag {
+            font-weight: bold;
+            color: #e11d48;
+            font-size: 1.1rem;
+            background: #fff1f2;
+            padding: 6px 14px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        /* قسم الاتصال المكتمل ونموذج المراسلة المتقدم */
+        .contact-section {
+            background: #f8fafc;
+            padding: 35px 25px;
+            border-top: 1px solid var(--border-color);
             text-align: right;
         }
 
-        .post-author {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
         }
 
-        .author-mini-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: #0f172a;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
-
-        .author-names {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .author-name {
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-
-        .author-handle {
-            color: var(--twitter-gray);
-            font-size: 0.85rem;
-        }
-
-        .post-text {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .post-image-wrapper {
-            width: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--twitter-border);
-            margin-bottom: 12px;
-        }
-
-        .post-card img {
-            width: 100%;
-            height: auto;
-            max-height: 350px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .post-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 0;
-        }
-
-        .post-price {
-            font-weight: bold;
-            color: #f43f5e;
-            font-size: 1rem;
-            background: #fff1f2;
-            padding: 4px 12px;
-            border-radius: 20px;
-        }
-
-        .post-actions-icons {
-            color: var(--twitter-gray);
-            font-size: 0.9rem;
-        }
-
-        /* زر الواتساب العائم والسريع */
-        .btn-whatsapp-fixed {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* المساعد الذكي السفلي المدمج */
-        .ai-launcher-fixed {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background-color: var(--twitter-blue);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.95rem;
-            box-shadow: 0 4px 12px rgba(29,155,240,0.3);
-            z-index: 999;
-        }
-
-        .ai-window {
-            position: fixed;
-            bottom: 80px;
-            left: 20px;
-            right: 20px;
-            max-width: 360px;
-            height: 400px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-            display: none;
-            flex-direction: column;
-            z-index: 1000;
-            border: 1px solid var(--twitter-border);
-            overflow: hidden;
-        }
-
-        .ai-header {
-            background: var(--twitter-text);
-            color: white;
-            padding: 15px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
+        .contact-info-box h3, .contact-form-box h3 { color: var(--twitter-dark); margin-top: 0; }
         
-        .ai-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background: #f7f9f9;
+        .phone-buttons { display: flex; flex-direction: column; gap: 10px; margin: 15px 0; }
+        .phone-link {
+            display: block;
+            padding: 12px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--twitter-dark);
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .phone-link:hover { background: #f1f5f9; border-color: var(--twitter-blue); }
+
+        /* تصميم استمارة المراسلة */
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; box-sizing: border-box; font-family: inherit;
+        }
+        .btn-submit {
+            background: var(--instagram-gradient); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; font-size: 1rem;
         }
 
-        .msg { margin-bottom: 12px; padding: 10px; border-radius: 12px; max-width: 85%; font-size: 0.9rem; line-height: 1.4; text-align: right; }
-        .msg.bot { background: #eff3f4; color: var(--twitter-text); }
+        /* أزرار التواصل العائمة في الأسفل */
+        .floating-actions {
+            position: fixed; bottom: 20px; left: 20px; display: flex; gap: 10px; z-index: 999;
+        }
+        .action-wa { background-color: #25D366; color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
+        .action-ai { background-color: var(--twitter-blue); color: white; padding: 12px 24px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(29,155,240,0.3); }
+
+        /* نافذة المساعد الذكي */
+        .ai-window {
+            position: fixed; bottom: 80px; left: 20px; width: 340px; height: 400px; background: white; border-radius: 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); display: none; flex-direction: column; z-index: 1000; border: 1px solid var(--border-color); overflow: hidden;
+        }
+        .ai-header { background: var(--twitter-dark); color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; }
+        .ai-messages { flex: 1; padding: 15px; overflow-y: auto; background: #f7f9f9; }
+        .msg { margin-bottom: 12px; padding: 10px; border-radius: 12px; max-width: 85%; font-size: 0.9rem; }
+        .msg.bot { background: #eff3f4; }
         .msg.user { background: var(--twitter-blue); color: white; margin-right: auto; text-align: left; }
-        .ai-input-area { display: flex; padding: 10px; border-top: 1px solid var(--twitter-border); background: #fff; }
-        .ai-input-area input { flex: 1; padding: 10px; border: 1px solid #cbd5e1; border-radius: 20px; outline: none; padding-right: 15px; }
+        .ai-input-area { display: flex; padding: 10px; border-top: 1px solid var(--border-color); background: #fff; }
+        .ai-input-area input { flex: 1; padding: 10px; border: 1px solid #cbd5e1; border-radius: 20px; outline: none; }
         .ai-input-area button { background: var(--twitter-blue); color: white; border: none; padding: 0 15px; margin-right: 5px; border-radius: 20px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
+    <div class="site-wrapper">
+        <!-- غلاف حساب إنستغرام وتويتر المدمج -->
+        <div class="profile-banner"></div>
         
-        <!-- جزء البرفضايل العلوي التويتري -->
         <div class="profile-header">
-            <div class="profile-top">
+            <div class="profile-avatar-wrapper">
                 <div class="profile-avatar">DP</div>
-                <div class="profile-info">
-                    <h1>مطبعة الداودي <span class="verified-badge">✓</span></h1>
-                    <p>@daoudiprint2026</p>
+                <div class="social-links-top">
+                    <a href="https://instagram.com" class="link-ig" target="_blank">إنستغرام 📸</a>
+                    <a href="https://twitter.com" class="link-tw" target="_blank">تويتر 🐦</a>
                 </div>
             </div>
+            <div class="profile-info">
+                <h1>مطبعة الداودي (Daoudi Print) <span class="verified-badge">✓</span></h1>
+                <div class="handle">@daoudiprint2026</div>
+            </div>
             <div class="profile-bio">
-                ✨ جودة واحترافية في عالم الطباعة الرقمية والإعلانية بمراكش.<br>
-                💼 مطبوعات تجارية • لافتات محلات • علب وتغليف فاخر.
+                ✨ <b>جودة واحترافية في عالم الطباعة الرقمية والإعلانية بمراكش.</b> نلبي كافة طلباتكم التجارية والتسويقية بأحدث الآلات وبأفضل الأسعار المناسبة لمشروعك.
             </div>
         </div>
 
-        <!-- التبويبات على شكل أقسام تويتر النشطة -->
+        <!-- أزرار الأقسام الفسيحة للتنقل -->
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="openTab('commercial')">مطبوعات تجارية</button>
-            <button class="tab-btn" onclick="openTab('signage')">لوحات ولافتات</button>
-            <button class="tab-btn" onclick="openTab('packaging')">علب وتغليف</button>
-        </div>
-
-        <!-- 1. قسم المطبوعات التجارية كمنشورات متتالية -->
-        <div id="commercial" class="tab-content active">
-            <!-- منشور 1 -->
-            <div class="post-card">
-                <div class="post-author">
+            <button class="tab-btn active" onclick="openTab('commercial')">المطبوعات التجارية</button>
+            <button class="tab-btn" onclick="openTab('signage')">اللوحات واللافتات</button>
+            <button class="tab-btn" onclick="openTab('packaging')">التغليف والعلب الفاخرة</button>
