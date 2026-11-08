@@ -3,256 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مطبعة الداودي | خدمات طباعة احترافية متعددة الأقسام</title>
+    <title>Daoudi Print | مطبعة الداودي</title>
     <style>
         :root {
-            --primary-color: #2563eb;
-            --dark-color: #0f172a;
-            --light-bg: #f8fafc;
-            --text-color: #1e293b;
+            --twitter-blue: #1d9bf0;
+            --twitter-bg: #ffffff;
+            --twitter-border: #eff3f4;
+            --twitter-text: #0f1419;
+            --twitter-gray: #536471;
+            --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
 
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             margin: 0; 
             padding: 0; 
-            background-color: var(--light-bg); 
-            color: var(--text-color); 
-            text-align: center; 
+            background-color: #f7f9f9; 
+            color: var(--twitter-text); 
+            direction: rtl;
         }
 
-        header { 
-            background: linear-gradient(135deg, var(--dark-color), var(--primary-color)); 
-            color: white; 
-            padding: 50px 20px; 
+        /* حاوية التطبيق المركزية - تشبه واجهة الهاتف */
+        .app-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--twitter-bg);
+            min-height: 100vh;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-left: 1px solid var(--twitter-border);
+            border-right: 1px solid var(--twitter-border);
+            padding-bottom: 80px;
         }
-        header h1 { margin: 0; font-size: 2.8rem; }
-        header p { margin: 10px 0 0 0; font-size: 1.2rem; opacity: 0.9; }
+
+        /* بروفايل المطبعة على طريقة إنستغرام وتويتر */
+        .profile-header {
+            border-bottom: 1px solid var(--twitter-border);
+            padding: 20px 15px;
+            text-align: right;
+            background: #ffffff;
+        }
         
-        .container { 
-            max-width: 1100px; 
-            margin: -30px auto 40px auto; 
-            padding: 30px; 
-            background: white; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+        .profile-top {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
         }
 
-        /* أزرار التنقل بين الأقسام */
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #1d9bf0;
+            flex-shrink: 0;
+        }
+
+        .profile-info h1 {
+            margin: 0;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* شارة التوثيق الزرقاء */
+        .verified-badge {
+            color: var(--twitter-blue);
+            font-size: 1.2rem;
+        }
+
+        .profile-info p {
+            margin: 5px 0 0 0;
+            color: var(--twitter-gray);
+            font-size: 0.95rem;
+        }
+
+        .profile-bio {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--twitter-text);
+            margin-top: 10px;
+        }
+
+        /* أزرار التنقل والتبويبات السريعة */
         .nav-tabs {
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            border-bottom: 1px solid var(--twitter-border);
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
+        
         .tab-btn {
-            background-color: #e2e8f0;
-            color: var(--dark-color);
+            flex: 1;
+            background: none;
             border: none;
-            padding: 12px 25px;
-            font-size: 1.1rem;
+            padding: 15px 0;
+            font-size: 0.95rem;
             font-weight: bold;
-            border-radius: 30px;
+            color: var(--twitter-gray);
             cursor: pointer;
-            transition: 0.3s;
-        }
-        .tab-btn.active, .tab-btn:hover {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+            text-align: center;
+            transition: 0.2s;
+            position: relative;
         }
 
-        /* محتوى الأقسام */
+        .tab-btn.active {
+            color: var(--twitter-text);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            right: 20%;
+            height: 4px;
+            background-color: var(--twitter-blue);
+            border-radius: 2px;
+        }
+
+        /* محتوى التايملاين والمنشورات */
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s ease;
         }
+        
         .tab-content.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* شبكة عرض الصور والأسعار */
-        .items-grid {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .item-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            width: 31%;
-            box-sizing: border-box;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            transition: 0.3s;
-        }
-        .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-        .item-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .item-info {
+        /* تصميم منشور إنستغرام/تويتر الاحترافي */
+        .post-card {
+            border-bottom: 1px solid var(--twitter-border);
+            background: #ffffff;
             padding: 15px;
             text-align: right;
         }
-        .item-info h4 { margin: 0 0 10px 0; color: #1e3a8a; font-size: 1.2rem; }
-        .item-info p { margin: 0 0 15px 0; color: #475569; font-size: 0.9rem; }
-        .item-price {
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .author-mini-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #0f172a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
-            color: #e11d48;
-            font-size: 1.1rem;
+            font-size: 0.85rem;
+        }
+
+        .author-names {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .author-handle {
+            color: var(--twitter-gray);
+            font-size: 0.85rem;
+        }
+
+        .post-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .post-image-wrapper {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--twitter-border);
+            margin-bottom: 12px;
+        }
+
+        .post-card img {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            object-fit: cover;
             display: block;
-            border-top: 1px dashed #e2e8f0;
-            padding-top: 10px;
         }
 
-        .btn-whatsapp { 
-            display: inline-block; 
-            background-color: #25D366; 
-            color: white; 
-            padding: 14px 35px; 
-            text-decoration: none; 
-            border-radius: 30px; 
-            font-weight: bold; 
-            margin-top: 30px; 
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        .post-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
         }
 
-        /* تصميم المساعد الذكي */
-        .ai-chat-launcher {
+        .post-price {
+            font-weight: bold;
+            color: #f43f5e;
+            font-size: 1rem;
+            background: #fff1f2;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .post-actions-icons {
+            color: var(--twitter-gray);
+            font-size: 0.9rem;
+        }
+
+        /* زر الواتساب العائم والسريع */
+        .btn-whatsapp-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* المساعد الذكي السفلي المدمج */
+        .ai-launcher-fixed {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background-color: var(--primary-color);
+            background-color: var(--twitter-blue);
             color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
+            padding: 12px 20px;
+            border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
             font-weight: bold;
-            z-index: 1000;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(29,155,240,0.3);
+            z-index: 999;
         }
+
         .ai-window {
             position: fixed;
             bottom: 80px;
             left: 20px;
-            width: 340px;
-            height: 420px;
+            right: 20px;
+            max-width: 360px;
+            height: 400px;
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.15);
             display: none;
             flex-direction: column;
             z-index: 1000;
-            border: 1px solid #e2e8f0;
-            text-align: right;
+            border: 1px solid var(--twitter-border);
+            overflow: hidden;
         }
+
         .ai-header {
-            background: var(--dark-color);
+            background: var(--twitter-text);
             color: white;
             padding: 15px;
             font-weight: bold;
             display: flex;
             justify-content: space-between;
         }
-        .ai-close { cursor: pointer; }
+        
         .ai-messages {
             flex: 1;
             padding: 15px;
             overflow-y: auto;
-            background: #f8fafc;
+            background: #f7f9f9;
         }
-        .msg { margin-bottom: 12px; padding: 10px; border-radius: 8px; max-width: 85%; font-size: 0.95rem; }
-        .msg.bot { background: #e2e8f0; align-self: flex-start; }
-        .msg.user { background: var(--primary-color); color: white; margin-right: auto; text-align: left; }
-        .ai-input-area { display: flex; padding: 10px; border-top: 1px solid #e2e8f0; }
-        .ai-input-area input { flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; }
-        .ai-input-area button { background: var(--primary-color); color: white; border: none; padding: 8px 15px; margin-right: 5px; border-radius: 6px; cursor: pointer; }
+
+        .msg { margin-bottom: 12px; padding: 10px; border-radius: 12px; max-width: 85%; font-size: 0.9rem; line-height: 1.4; text-align: right; }
+        .msg.bot { background: #eff3f4; color: var(--twitter-text); }
+        .msg.user { background: var(--twitter-blue); color: white; margin-right: auto; text-align: left; }
+        .ai-input-area { display: flex; padding: 10px; border-top: 1px solid var(--twitter-border); background: #fff; }
+        .ai-input-area input { flex: 1; padding: 10px; border: 1px solid #cbd5e1; border-radius: 20px; outline: none; padding-right: 15px; }
+        .ai-input-area button { background: var(--twitter-blue); color: white; border: none; padding: 0 15px; margin-right: 5px; border-radius: 20px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>مطبعة الداودي (Daoudi Print)</h1>
-        <p>جودة واحترافية في عالم الطباعة الرقمية والإعلانية</p>
-    </header>
-
-    <div class="container">
-        <!-- أزرار الأقسام لسهولة الاختيار والتحول لصفحة مخصصة -->
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="openTab('commercial')">المطبوعات التجارية</button>
-            <button class="tab-btn" onclick="openTab('signage')">اللوحات واللافتات</button>
-            <button class="tab-btn" onclick="openTab('packaging')">التغليف والعلب الفاخرة</button>
-        </div>
-
-        <!-- 1. قسم المطبوعات التجارية -->
-        <div id="commercial" class="tab-content active">
-            <h3>المطبوعات التجارية 📇</h3>
-            <p>حلول متكاملة لهوية محلك أو شركتك بأفضل جودة ورق وطباعة.</p>
-            <div class="items-grid">
-                <div class="item-card">
-                    <img src="https://unsplash.com" alt="كروت عمل">
-                    <div class="item-info">
-                        <h4>كارت فيزيت (Business Cards)</h4>
-                        <p>طباعة سميكة بجودة سيلوفان لامع أو مات تناسب برستيج عملك.</p>
-                        <span class="item-price">ابتداءً من 150 درهم / 1000 حبة</span>
-                    </div>
+    <div class="app-container">
+        
+        <!-- جزء البرفضايل العلوي التويتري -->
+        <div class="profile-header">
+            <div class="profile-top">
+                <div class="profile-avatar">DP</div>
+                <div class="profile-info">
+                    <h1>مطبعة الداودي <span class="verified-badge">✓</span></h1>
+                    <p>@daoudiprint2026</p>
                 </div>
-                <div class="item-card">
-                    <img src="https://unsplash.com" alt="مطويات إعلانية">
-                    <div class="item-info">
-                        <h4>مطويات وفلايرز (Flyers)</h4>
-                        <p>منشورات دعائية بألوان زاهية لتوزيعها وإشهار عروض محلك.</p>
-                        <span class="item-price">ابتداءً من 350 درهم / 1000 حبة</span>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <img src="https://unsplash.com" alt="فواتير مخصصة">
-                    <div class="item-info">
-                        <h4>فواتير وسجلات تجارية</h4>
-                        <p>دفاتر فواتير مرقمة بالكربون مخصصة لإدارة مبيعاتك بشكل رسمي.</p>
-                        <span class="item-price">ابتداءً من 25 درهم / دفتر</span>
-                    </div>
-                </div>
+            </div>
+            <div class="profile-bio">
+                ✨ جودة واحترافية في عالم الطباعة الرقمية والإعلانية بمراكش.<br>
+                💼 مطبوعات تجارية • لافتات محلات • علب وتغليف فاخر.
             </div>
         </div>
 
-        <!-- 2. قسم اللوحات واللافتات -->
-        <div id="signage" class="tab-content">
-            <h3>اللوحات واللافتات 🖼️</h3>
-            <p>اجعل واجهة محلك مميزة وملفتة للأنظار في الشارع بفضل دقة اللوحات الإعلانية الكبيرة.</p>
-            <div class="items-grid">
-                <div class="item-card">
-                    <img src="https://unsplash.com" alt="لوحة محل">
-                    <div class="item-info">
-                        <h4>لافتات محلات مضيئة (LED)</h4>
-                        <p>تصميم وتركيب لوحات بارزة وواجهات ألومنيوم مع إضاءة قوية.</p>
-                        <span class="item-price">حسب المقاس والتصميم</span>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <img src="https://unsplash.com" alt="بانر إعلاني">
-                    <div class="item-info">
-                        <h4>بانر وبلاستيك دعائي (Banners)</h4>
-                        <p>طباعة رول أو لافتات قماشية كبيرة ومقاومة لأشعة الشمس والمطر.</p>
-                        <span class="item-price">ابتداءً من 60 درهم / متر مربع</span>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <img src="https://unsplash.com" alt="ستيكر واجهات">
-                    <div class="item-info">
-                        <h4>ملصقات الواجهات الزجاجية</h4>
+        <!-- التبويبات على شكل أقسام تويتر النشطة -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="openTab('commercial')">مطبوعات تجارية</button>
+            <button class="tab-btn" onclick="openTab('signage')">لوحات ولافتات</button>
+            <button class="tab-btn" onclick="openTab('packaging')">علب وتغليف</button>
+        </div>
+
+        <!-- 1. قسم المطبوعات التجارية كمنشورات متتالية -->
+        <div id="commercial" class="tab-content active">
+            <!-- منشور 1 -->
+            <div class="post-card">
+                <div class="post-author">
