@@ -3,68 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مطبعة الداودي | خدمات طباعة احترافية ودعم ذكي</title>
+    <title>مطبعة الداودي | خدمات طباعة احترافية متعددة الأقسام</title>
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --dark-color: #0f172a;
+            --light-bg: #f8fafc;
+            --text-color: #1e293b;
+        }
+
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
             padding: 0; 
-            background-color: #f8fafc; 
-            color: #1e293b; 
+            background-color: var(--light-bg); 
+            color: var(--text-color); 
             text-align: center; 
         }
+
         header { 
-            background: linear-gradient(135deg, #0f172a, #2563eb); 
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color)); 
             color: white; 
-            padding: 60px 20px; 
+            padding: 50px 20px; 
         }
         header h1 { margin: 0; font-size: 2.8rem; }
-        header p { margin: 10px 0 0 0; font-size: 1.3rem; opacity: 0.9; }
+        header p { margin: 10px 0 0 0; font-size: 1.2rem; opacity: 0.9; }
         
         .container { 
             max-width: 1100px; 
-            margin: -40px auto 40px auto; 
+            margin: -30px auto 40px auto; 
             padding: 30px; 
             background: white; 
             border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
         }
-        
-        .services { 
-            display: flex; 
-            justify-content: space-between; 
-            flex-wrap: wrap; 
-            margin-top: 40px; 
+
+        /* أزرار التنقل بين الأقسام */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
         }
-        .service-box { 
-            background: #ffffff; 
-            border: 1px solid #e2e8f0;
-            border-radius: 8px; 
-            width: 31%; 
-            margin: 15px 0; 
-            box-sizing: border-box; 
-            border-top: 5px solid #2563eb;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        .tab-btn {
+            background-color: #e2e8f0;
+            color: var(--dark-color);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
             transition: 0.3s;
         }
-        .service-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
-        .service-box img {
+
+        /* محتوى الأقسام */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* شبكة عرض الصور والأسعار */
+        .items-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .item-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            width: 31%;
+            box-sizing: border-box;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: 0.3s;
+        }
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        .item-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 1px solid #e2e8f0;
         }
-        .service-box-content {
-            padding: 20px;
+        .item-info {
+            padding: 15px;
             text-align: right;
         }
-        .service-box h3 { margin: 0 0 10px 0; color: #1e3a8a; font-size: 1.4rem; }
-        .service-box p { margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6; }
-        
+        .item-info h4 { margin: 0 0 10px 0; color: #1e3a8a; font-size: 1.2rem; }
+        .item-info p { margin: 0 0 15px 0; color: #475569; font-size: 0.9rem; }
+        .item-price {
+            font-weight: bold;
+            color: #e11d48;
+            font-size: 1.1rem;
+            display: block;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 10px;
+        }
+
         .btn-whatsapp { 
             display: inline-block; 
             background-color: #25D366; 
@@ -73,21 +127,17 @@
             text-decoration: none; 
             border-radius: 30px; 
             font-weight: bold; 
-            margin-top: 40px; 
+            margin-top: 30px; 
             font-size: 1.1rem;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: 0.3s; 
-        }
-        .btn-whatsapp:hover { 
-            background-color: #1ebd58; 
-            transform: translateY(-2px);
         }
 
+        /* تصميم المساعد الذكي */
         .ai-chat-launcher {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background-color: #2563eb;
+            background-color: var(--primary-color);
             color: white;
             padding: 15px 20px;
             border-radius: 50px;
@@ -95,13 +145,7 @@
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
             font-weight: bold;
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
         }
-        .ai-chat-launcher:hover { transform: scale(1.05); background-color: #1d4ed8; }
-        
         .ai-window {
             position: fixed;
             bottom: 80px;
@@ -114,52 +158,30 @@
             display: none;
             flex-direction: column;
             z-index: 1000;
-            overflow: hidden;
             border: 1px solid #e2e8f0;
             text-align: right;
         }
         .ai-header {
-            background: #0f172a;
+            background: var(--dark-color);
             color: white;
             padding: 15px;
             font-weight: bold;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
-        .ai-close { cursor: pointer; font-size: 1.2rem; }
+        .ai-close { cursor: pointer; }
         .ai-messages {
             flex: 1;
             padding: 15px;
             overflow-y: auto;
             background: #f8fafc;
-            font-size: 0.95rem;
         }
-        .msg { margin-bottom: 12px; padding: 10px; border-radius: 8px; max-width: 85%; }
-        .msg.bot { background: #e2e8f0; color: #0f172a; align-self: flex-start; }
-        .msg.user { background: #2563eb; color: white; margin-right: auto; text-align: left; }
-        .ai-input-area {
-            display: flex;
-            border-top: 1px solid #e2e8f0;
-            padding: 10px;
-            background: white;
-        }
-        .ai-input-area input {
-            flex: 1;
-            padding: 8px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            outline: none;
-        }
-        .ai-input-area button {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            margin-right: 5px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+        .msg { margin-bottom: 12px; padding: 10px; border-radius: 8px; max-width: 85%; font-size: 0.95rem; }
+        .msg.bot { background: #e2e8f0; align-self: flex-start; }
+        .msg.user { background: var(--primary-color); color: white; margin-right: auto; text-align: left; }
+        .ai-input-area { display: flex; padding: 10px; border-top: 1px solid #e2e8f0; }
+        .ai-input-area input { flex: 1; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; }
+        .ai-input-area button { background: var(--primary-color); color: white; border: none; padding: 8px 15px; margin-right: 5px; border-radius: 6px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -170,91 +192,67 @@
     </header>
 
     <div class="container">
-        <h2>خدماتنا المتميزة ✨</h2>
-        
-        <div class="services">
-            <!-- المطبوعات التجارية -->
-            <div class="service-box">
-                <img src="https://unsplash.com" alt="المطبوعات التجارية">
-                <div class="service-box-content">
-                    <h3>المطبوعات التجارية</h3>
-                    <p>تصميم وطباعة كروت عمل (Visite) احترافية، مطويات إعلانية (Flyers)، وفواتير مخصصة.</p>
+        <!-- أزرار الأقسام لسهولة الاختيار والتحول لصفحة مخصصة -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="openTab('commercial')">المطبوعات التجارية</button>
+            <button class="tab-btn" onclick="openTab('signage')">اللوحات واللافتات</button>
+            <button class="tab-btn" onclick="openTab('packaging')">التغليف والعلب الفاخرة</button>
+        </div>
+
+        <!-- 1. قسم المطبوعات التجارية -->
+        <div id="commercial" class="tab-content active">
+            <h3>المطبوعات التجارية 📇</h3>
+            <p>حلول متكاملة لهوية محلك أو شركتك بأفضل جودة ورق وطباعة.</p>
+            <div class="items-grid">
+                <div class="item-card">
+                    <img src="https://unsplash.com" alt="كروت عمل">
+                    <div class="item-info">
+                        <h4>كارت فيزيت (Business Cards)</h4>
+                        <p>طباعة سميكة بجودة سيلوفان لامع أو مات تناسب برستيج عملك.</p>
+                        <span class="item-price">ابتداءً من 150 درهم / 1000 حبة</span>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="https://unsplash.com" alt="مطويات إعلانية">
+                    <div class="item-info">
+                        <h4>مطويات وفلايرز (Flyers)</h4>
+                        <p>منشورات دعائية بألوان زاهية لتوزيعها وإشهار عروض محلك.</p>
+                        <span class="item-price">ابتداءً من 350 درهم / 1000 حبة</span>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="https://unsplash.com" alt="فواتير مخصصة">
+                    <div class="item-info">
+                        <h4>فواتير وسجلات تجارية</h4>
+                        <p>دفاتر فواتير مرقمة بالكربون مخصصة لإدارة مبيعاتك بشكل رسمي.</p>
+                        <span class="item-price">ابتداءً من 25 درهم / دفتر</span>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- اللوحات واللافتات -->
-            <div class="service-box">
-                <img src="https://unsplash.com" alt="اللوحات واللافتات">
-                <div class="service-box-content">
-                    <h3>اللوحات واللافتات</h3>
-                    <p>طباعة لافتات المتاجر، البانرات الإعلانية الكبيرة، والملصقات بجودة عالية ومقاومة للطقس.</p>
+        <!-- 2. قسم اللوحات واللافتات -->
+        <div id="signage" class="tab-content">
+            <h3>اللوحات واللافتات 🖼️</h3>
+            <p>اجعل واجهة محلك مميزة وملفتة للأنظار في الشارع بفضل دقة اللوحات الإعلانية الكبيرة.</p>
+            <div class="items-grid">
+                <div class="item-card">
+                    <img src="https://unsplash.com" alt="لوحة محل">
+                    <div class="item-info">
+                        <h4>لافتات محلات مضيئة (LED)</h4>
+                        <p>تصميم وتركيب لوحات بارزة وواجهات ألومنيوم مع إضاءة قوية.</p>
+                        <span class="item-price">حسب المقاس والتصميم</span>
+                    </div>
                 </div>
-            </div>
-
-            <!-- الهدايا والدعاية -->
-            <div class="service-box">
-                <img src="https://unsplash.com" alt="الهدايا والدعاية">
-                <div class="service-box-content">
-                    <h3>الهدايا والدعاية</h3>
-                    <p>الطباعة الحرارية المخصصة على الملابس (T-shirts)، الأكواب (Mugs)، والمواد الدعائية.</p>
+                <div class="item-card">
+                    <img src="https://unsplash.com" alt="بانر إعلاني">
+                    <div class="item-info">
+                        <h4>بانر وبلاستيك دعائي (Banners)</h4>
+                        <p>طباعة رول أو لافتات قماشية كبيرة ومقاومة لأشعة الشمس والمطر.</p>
+                        <span class="item-price">ابتداءً من 60 درهم / متر مربع</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <p style="margin-top: 40px; font-size: 1.2rem; color: #475569;">هل لديك طلب خاص أو تريد الاستفسار عن الأسعار؟ تواصل معنا مباشرة:</p>
-        <a href="https://wa.me" class="btn-whatsapp" target="_blank">💬 أرسل طلبك الآن عبر الواتساب</a>
-    </div>
-
-    <div class="ai-chat-launcher" onclick="toggleChat()">
-        <span>🤖 المساعد الذكي (AI)</span>
-    </div>
-
-    <div class="ai-window" id="aiWindow">
-        <div class="ai-header">
-            <span>مساعد مطبعة الداودي الذكي</span>
-            <span class="ai-close" onclick="toggleChat()">✕</span>
-        </div>
-        <div class="ai-messages" id="aiMessages">
-            <div class="msg bot">مرحباً بك في مطبعة الداودي! أنا مساعدك الذكي. كيف يمكنني مساعدتك في خدمات الطباعة اليوم؟</div>
-        </div>
-        <div class="ai-input-area">
-            <input type="text" id="aiInput" placeholder="اكتب سؤالك هنا..." onkeypress="handleKeyPress(event)">
-            <button onclick="sendMessage()">إرسال</button>
-        </div>
-    </div>
-
-    <script>
-        function toggleChat() {
-            var win = document.getElementById('aiWindow');
-            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        }
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') { sendMessage(); }
-        }
-        function sendMessage() {
-            var input = document.getElementById('aiInput');
-            var text = input.value.trim();
-            if (text === '') return;
-            var msgDiv = document.getElementById('aiMessages');
-            msgDiv.innerHTML += '<div class="msg user">' + text + '</div>';
-            input.value = '';
-            msgDiv.scrollTop = msgDiv.scrollHeight;
-            setTimeout(function() {
-                var reply = "عذراً، لم أفهم سؤالك تماماً. يمكنك الاستفسار عن الأسعار، كروت الفيزيت، اللوحات، أو الملابس المطبوعة!";
-                var lowerText = text.toLowerCase();
-                if (lowerText.includes('ثمن') || lowerText.includes('سعر') || lowerText.includes('أسعار')) {
-                    reply = "تختلف الأسعار حسب الكمية. اضغط على زر الواتساب الأخضر في الموقع للحصول على تسعيرة دقيقة فوراً!";
-                } else if (lowerText.includes('كارت') || lowerText.includes('visite')) {
-                    reply = "نوفر طباعة كروت عمل احترافية بجودة عالية. كم الكمية التي تحتاجها؟";
-                } else if (lowerText.includes('لوحة') || lowerText.includes('لافتة')) {
-                    reply = "نصمم ونطبع لوحات المتاجر واللافتات الخارجية بمقاسات مخصصة مقاومة للعوامل الجوية.";
-                } else if (lowerText.includes('سلام') || lowerText.includes('مرحبا')) {
-                    reply = "أهلاً بك! أنا هنا لخدمتك. هل تود الاستفسار عن المطبوعات التجارية، اللوحات، أم الطباعة على الهدايا؟";
-                }
-                msgDiv.innerHTML += '<div class="msg bot">' + reply + '</div>';
-                msgDiv.scrollTop = msgDiv.scrollHeight;
-            }, 800);
-        }
-    </script>
-</body>
-</html>
+                <div class="item-card">
+                    <img src="https://unsplash.com" alt="ستيكر واجهات">
+                    <div class="item-info">
+                        <h4>ملصقات الواجهات الزجاجية</h4>
