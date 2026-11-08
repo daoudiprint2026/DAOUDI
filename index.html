@@ -3,191 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sté DAOUDI PRINT | مطبعة الداودي</title>
+    <title>مطبعة الداودي | خدمات طباعة احترافية ودعم ذكي</title>
     <style>
-        /* نظام التنسيق الفاخر المتناسق مع ألوان شعار مطبعة الداودي */
-        :root {
-            --bg-main: #0b0c10;       /* أسود ملكي عميق */
-            --bg-card: #1f2833;       /* رمادي ميتاليك داكن للكروت */
-            --accent-gold: #e0532b;   /* البرتقالي الناري الفاخر الخاص بشعاركم */
-            --text-light: #ffffff;
-            --text-muted: #c5a880;    /* لمسة برونزية ناعمة للنصوص */
-            --whatsapp: #22c55e;
-        }
-
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; padding: 0; 
-            background-color: var(--bg-main); 
-            color: var(--text-light);
-            line-height: 1.8;
+            margin: 0; 
+            padding: 0; 
+            background-color: #f8fafc; 
+            color: #1e293b; 
+            text-align: center; 
         }
-
         header { 
-            background: linear-gradient(180deg, #1f2833 0%, var(--bg-main) 100%);
-            padding: 60px 20px 30px 20px; 
-            text-align: center;
+            background: linear-gradient(135deg, #0f172a, #2563eb); 
+            color: white; 
+            padding: 60px 20px; 
+        }
+        header h1 { margin: 0; font-size: 2.8rem; }
+        header p { margin: 10px 0 0 0; font-size: 1.3rem; opacity: 0.9; }
+        
+        .container { 
+            max-width: 1100px; 
+            margin: -40px auto 40px auto; 
+            padding: 30px; 
+            background: white; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
         }
         
-        .logo-text-style {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
+        .services { 
+            display: flex; 
+            justify-content: space-between; 
+            flex-wrap: wrap; 
+            margin-top: 40px; 
         }
-        .logo-text-style span { color: var(--accent-gold); }
-        .logo-subtext { font-size: 0.9rem; color: #a3a3a3; margin-bottom: 20px; text-transform: uppercase; }
-
-        .main-brand-title {
-            font-size: 4rem;
-            font-weight: 900;
-            margin: 10px 0;
-            background: linear-gradient(to left, #ffffff, var(--accent-gold), #ff8462);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0px 0px 30px rgba(224, 83, 43, 0.3);
+        .service-box { 
+            background: #ffffff; 
+            border: 1px solid #e2e8f0;
+            border-radius: 8px; 
+            width: 31%; 
+            margin: 15px 0; 
+            box-sizing: border-box; 
+            border-top: 5px solid #2563eb;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: 0.3s;
+        }
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .service-box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .service-box-content {
+            padding: 20px;
+            text-align: right;
+        }
+        .service-box h3 { margin: 0 0 10px 0; color: #1e3a8a; font-size: 1.4rem; }
+        .service-box p { margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.6; }
+        
+        .btn-whatsapp { 
+            display: inline-block; 
+            background-color: #25D366; 
+            color: white; 
+            padding: 14px 35px; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-weight: bold; 
+            margin-top: 40px; 
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: 0.3s; 
+        }
+        .btn-whatsapp:hover { 
+            background-color: #1ebd58; 
+            transform: translateY(-2px);
         }
 
-        .header-tagline { font-size: 1.3rem; color: #94a3b8; margin: 15px auto 0 auto; max-width: 650px; font-weight: 300; }
-
-        /* معرض أمثلة التصاميم والاشهارات */
-        .gallery-showcase {
-            max-width: 1100px;
-            margin: 50px auto 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
+        .ai-chat-launcher {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #2563eb;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            font-weight: bold;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
         }
-
-        .main-hero-image {
-            height: 440px; border-radius: 24px; overflow: hidden;
-            border: 1px solid rgba(224, 83, 43, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6); position: relative;
+        .ai-chat-launcher:hover { transform: scale(1.05); background-color: #1d4ed8; }
+        
+        .ai-window {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            width: 340px;
+            height: 420px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            text-align: right;
         }
-
-        .side-images-grid { display: flex; flex-direction: column; gap: 20px; }
-        .side-hero-image {
-            height: 210px; border-radius: 20px; overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5); position: relative;
+        .ai-header {
+            background: #0f172a;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        .gallery-showcase img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .gallery-showcase img:hover { transform: scale(1.06); }
-
-        .img-caption {
-            position: absolute; bottom: 0; right: 0; left: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.85));
-            padding: 20px; font-size: 1.1rem; font-weight: 600; color: #fff;
+        .ai-close { cursor: pointer; font-size: 1.2rem; }
+        .ai-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f8fafc;
+            font-size: 0.95rem;
         }
-
-        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
-        .section-title { text-align: center; font-size: 2.2rem; font-weight: 800; margin-bottom: 50px; }
-        .section-title span { position: relative; display: inline-block; }
-        .section-title span::after { content: ''; display: block; width: 50%; height: 3px; background: var(--accent-gold); margin: 12px auto 0 auto; }
-
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
-        .service-card { background: var(--bg-card); padding: 45px 35px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; }
-        .service-card:hover { transform: translateY(-8px); border-color: rgba(224, 83, 43, 0.4); box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5); }
-        .card-icon { font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 20px; }
-        .service-card h3 { margin: 0 0 15px 0; font-size: 1.5rem; font-weight: 700; }
-        .service-card p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 25px; }
-
-        .examples-list { margin: 0; padding: 0; list-style: none; }
-        .examples-list li { font-size: 0.9rem; color: var(--text-muted); padding: 8px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; align-items: center; gap: 10px; }
-        .examples-list li::before { content: '♦'; color: var(--accent-gold); }
-
-        .contact-panel { margin-top: 80px; background: linear-gradient(135deg, #1f2833 0%, #151c24 100%); padding: 50px 40px; border-radius: 28px; text-align: center; border: 1px solid rgba(224, 83, 43, 0.1); }
-        .buttons-wrapper { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 20px; }
-        .btn-whatsapp-premium { display: inline-flex; align-items: center; gap: 12px; background: var(--whatsapp); color: white; padding: 18px 38px; text-decoration: none; border-radius: 16px; font-weight: 700; font-size: 1.1rem; transition: all 0.3s ease; }
-        .btn-whatsapp-premium:hover { background: #16a34a; transform: translateY(-3px); }
-
-        /* تنسيق لوحة الخريطة الجغرافية بمراكش */
-        .map-panel { margin-top: 80px; }
-        .map-box { width: 100%; height: 400px; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .map-box iframe { width: 100%; height: 100%; border: 0; }
-
-        @media (max-width: 768px) {
-            .gallery-showcase { grid-template-columns: 1fr; }
-            .main-brand-title { font-size: 2.5rem; }
-            .main-hero-image { height: 260px; }
-            .buttons-wrapper { flex-direction: column; }
-            .btn-whatsapp-premium { justify-content: center; }
+        .msg { margin-bottom: 12px; padding: 10px; border-radius: 8px; max-width: 85%; }
+        .msg.bot { background: #e2e8f0; color: #0f172a; align-self: flex-start; }
+        .msg.user { background: #2563eb; color: white; margin-right: auto; text-align: left; }
+        .ai-input-area {
+            display: flex;
+            border-top: 1px solid #e2e8f0;
+            padding: 10px;
+            background: white;
+        }
+        .ai-input-area input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+        }
+        .ai-input-area button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-right: 5px;
+            border-radius: 6px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-text-style">Sté <span>DAOUDI PRINT</span> SARL AU</div>
-        <div class="logo-subtext">Imprimerie - Industrie Publicitaire</div>
-        <h1 class="main-brand-title">مطبعة الداودي</h1>
-        <p class="header-tagline">نصنع أفكاركم جودة ملموسة.. أرقى وأحدث تقنيات الطباعة الإعلانية والرقمية والأوفست</p>
+        <h1>مطبعة الداودي (Daoudi Print)</h1>
+        <p>جودة واحترافية في عالم الطباعة الرقمية والإعلانية</p>
     </header>
 
-    <div class="gallery-showcase">
-        <div class="main-hero-image">
-            <img src="https://unsplash.com" alt="اشهارات محلات مضيئة وبارزة">
-            <div class="img-caption">تصنيع واشهارات محلات مضيئة (3D LED Signage) ثلاثية الأبعاد</div>
+    <div class="container">
+        <h2>خدماتنا المتميزة ✨</h2>
+        
+        <div class="services">
+            <!-- المطبوعات التجارية -->
+            <div class="service-box">
+                <img src="https://unsplash.com" alt="المطبوعات التجارية">
+                <div class="service-box-content">
+                    <h3>المطبوعات التجارية</h3>
+                    <p>تصميم وطباعة كروت عمل (Visite) احترافية، مطويات إعلانية (Flyers)، وفواتير مخصصة.</p>
+                </div>
+            </div>
+
+            <!-- اللوحات واللافتات -->
+            <div class="service-box">
+                <img src="https://unsplash.com" alt="اللوحات واللافتات">
+                <div class="service-box-content">
+                    <h3>اللوحات واللافتات</h3>
+                    <p>طباعة لافتات المتاجر، البانرات الإعلانية الكبيرة، والملصقات بجودة عالية ومقاومة للطقس.</p>
+                </div>
+            </div>
+
+            <!-- الهدايا والدعاية -->
+            <div class="service-box">
+                <img src="https://unsplash.com" alt="الهدايا والدعاية">
+                <div class="service-box-content">
+                    <h3>الهدايا والدعاية</h3>
+                    <p>الطباعة الحرارية المخصصة على الملابس (T-shirts)، الأكواب (Mugs)، والمواد الدعائية.</p>
+                </div>
+            </div>
         </div>
-        <div class="side-images-grid">
-            <div class="side-hero-image">
-                <img src="https://unsplash.com" alt="نماذج كروت فيزيت فاخرة">
-                <div class="img-caption">كروت فيزيت مخملية فاخرة بمقاييس عالمية</div>
-            </div>
-            <div class="side-hero-image">
-                <img src="https://unsplash.com" alt="تصاميم هوية بصرية فاخرة">
-                <div class="img-caption">علب تغليف وهويات تجارية متكاملة ومبهرة</div>
-            </div>
+
+        <p style="margin-top: 40px; font-size: 1.2rem; color: #475569;">هل لديك طلب خاص أو تريد الاستفسار عن الأسعار؟ تواصل معنا مباشرة:</p>
+        <a href="https://wa.me" class="btn-whatsapp" target="_blank">💬 أرسل طلبك الآن عبر الواتساب</a>
+    </div>
+
+    <div class="ai-chat-launcher" onclick="toggleChat()">
+        <span>🤖 المساعد الذكي (AI)</span>
+    </div>
+
+    <div class="ai-window" id="aiWindow">
+        <div class="ai-header">
+            <span>مساعد مطبعة الداودي الذكي</span>
+            <span class="ai-close" onclick="toggleChat()">✕</span>
+        </div>
+        <div class="ai-messages" id="aiMessages">
+            <div class="msg bot">مرحباً بك في مطبعة الداودي! أنا مساعدك الذكي. كيف يمكنني مساعدتك في خدمات الطباعة اليوم؟</div>
+        </div>
+        <div class="ai-input-area">
+            <input type="text" id="aiInput" placeholder="اكتب سؤالك هنا..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">إرسال</button>
         </div>
     </div>
 
-    <div class="container">
-        <h2 class="section-title"><span>خطوط الإنتاج والخدمات ✦</span></h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="card-icon">📇</div>
-                <h3>المطبوعات التجارية</h3>
-                <p>صناعة الهوية الورقية للشركات بأعلى مقاييس الفخامة التي تعزز الثقة والتميز الجاد.</p>
-                <ul class="examples-list">
-                    <li>كروت فيزيت (Visite) مخملية مع Dorure ذهبي بارز</li>
-                    <li>مطويات إعلانية (Flyers) ناصعة وبراقة تجذب الأنظار لمنتجاتك</li>
-                    <li>دفاتر فواتير مرقمة ومخصصة وأوراق رسمية بدقة عالية</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="card-icon">🖼️</div>
-                <h3>اللوحات واللافتات</h3>
-                <p>حلول إعلانية خارجية ضخمة وبارزة تقاوم العوامل الجوية وتضمن ظهورك القوي.</p>
-                <ul class="examples-list">
-                    <li>لافتات محلات مضيئة وثلاثية الأبعاد (Box Led)</li>
-                    <li>بانرات دعائية عملاقة للمعارض بجودة ألوان فائقة ومقاومة للمطر</li>
-                    <li>ملصقات جدارية وستيكرات سيارات دعائية (Habillage) احترافية</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="card-icon">📦</div>
-                <h3>التغليف والعلب الفاخرة</h3>
-                <p>ابتكار وتصنيع التغليف الهندسي المخصص الذي يحمي منتجك ويبرز فخامته على الأرفف.</p>
-                <ul class="examples-list">
-                    <li>علب هدايا ومنتجات كرتونية فاخرة (Rigid Boxes) مقصوصة بالليزر</li>
-                    <li>أكياس ورقية صديقة للبيئة وحاملة لشعارك بألوان ذهبية وفضية</li>
-                    <li>أغلفة منتجات مخصصة وحواف ديكورية مبتكرة تلفت الانتباه على الأرفف</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="contact-panel">
-            <p>بدء طلب جديد أو طلب استشارة فورية مع فريق الإدارة والتصميم</p>
-            <div class="buttons-wrapper">
-                <a href="https://wa.me" class="btn-whatsapp-premium" target="_blank">💬 الإدارة والمبيعات (الخط 1)</a>
-                <a href="https://wa.me" class="btn-whatsapp-premium" target="_blank">💬 الطلبات والتصميم (الخط 2)</a>
-            </div>
-        </div>
-
-        <!-- قسم الخريطة لحي مسار بمراكش -->
-        <div class="map-panel">
-            <h2 class="section-title"><span>المقر الرئيسي للمطبعة 📍</span></h2>
-            <div class="map-box">
+    <script>
+        function toggleChat() {
+            var win = document.getElementById('aiWindow');
+            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+        }
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') { sendMessage(); }
+        }
+        function sendMessage() {
+            var input = document.getElementById('aiInput');
+            var text = input.value.trim();
+            if (text === '') return;
+            var msgDiv = document.getElementById('aiMessages');
+            msgDiv.innerHTML += '<div class="msg user">' + text + '</div>';
+            input.value = '';
+            msgDiv.scrollTop = msgDiv.scrollHeight;
+            setTimeout(function() {
+                var reply = "عذراً، لم أفهم سؤالك تماماً. يمكنك الاستفسار عن الأسعار، كروت الفيزيت، اللوحات، أو الملابس المطبوعة!";
+                var lowerText = text.toLowerCase();
+                if (lowerText.includes('ثمن') || lowerText.includes('سعر') || lowerText.includes('أسعار')) {
+                    reply = "تختلف الأسعار حسب الكمية. اضغط على زر الواتساب الأخضر في الموقع للحصول على تسعيرة دقيقة فوراً!";
+                } else if (lowerText.includes('كارت') || lowerText.includes('visite')) {
+                    reply = "نوفر طباعة كروت عمل احترافية بجودة عالية. كم الكمية التي تحتاجها؟";
+                } else if (lowerText.includes('لوحة') || lowerText.includes('لافتة')) {
+                    reply = "نصمم ونطبع لوحات المتاجر واللافتات الخارجية بمقاسات مخصصة مقاومة للعوامل الجوية.";
+                } else if (lowerText.includes('سلام') || lowerText.includes('مرحبا')) {
+                    reply = "أهلاً بك! أنا هنا لخدمتك. هل تود الاستفسار عن المطبوعات التجارية، اللوحات، أم الطباعة على الهدايا؟";
+                }
+                msgDiv.innerHTML += '<div class="msg bot">' + reply + '</div>';
+                msgDiv.scrollTop = msgDiv.scrollHeight;
+            }, 800);
+        }
+    </script>
+</body>
+</html>
