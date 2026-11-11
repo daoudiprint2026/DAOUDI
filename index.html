@@ -3,247 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daoudi Print | مطبعة الداودي بمراكش</title>
+    <title>مطبعة الداودي | Daoudi Print - خدمات الطباعة الاحترافية</title>
     <style>
         :root {
-            --twitter-blue: #1d9bf0;
-            --twitter-dark: #0f1419;
-            --instagram-gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            --bg-light: #f8fafc;
-            --border-color: #e2e8f0;
+            --primary-blue: #1DA1F2;
+            --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1DA1F2 50%, #bc1888 100%);
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
         }
 
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: var(--bg-light); 
-            color: var(--twitter-dark);
-            direction: rtl;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .site-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #ffffff;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
 
-        .profile-banner {
-            height: 180px;
-            background: var(--instagram-gradient);
-        }
-
-        .profile-header {
-            padding: 0 30px 20px 30px;
-            text-align: right;
-            position: relative;
-            border-bottom: 1px solid var(--border-color);
-            background: #ffffff;
-        }
-
-        .profile-avatar-wrapper {
+        /* الشريط العلوي */
+        nav {
+            background-color: var(--card-bg);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            margin-top: -60px;
-            margin-bottom: 15px;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .profile-avatar {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: #0f172a;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--insta-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin-right: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* الواجهة الرئيسية العريضة */
+        .hero {
+            background: var(--header-gradient);
             color: white;
+            text-align: center;
+            padding: 90px 20px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 750px;
+            margin: 0 auto 30px auto;
+            opacity: 0.95;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-insta {
+            background: var(--insta-gradient);
+            color: white;
+        }
+
+        /* الحاوية الرئيسية العريضة */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-bg);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* شبكة الخدمات والمنتجات */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+            border-bottom: 4px solid var(--primary-blue);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 220px;
+            background-color: #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #64748b;
             font-weight: bold;
-            font-size: 2.2rem;
-            border: 4px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .social-links-top a {
-            display: inline-block;
-            margin-right: 8px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            color: white;
-        }
-        .link-ig { background: var(--instagram-gradient); }
-        .link-tw { background: var(--twitter-blue); }
-
-        .profile-info h1 { margin: 0; font-size: 1.8rem; display: flex; align-items: center; gap: 8px; }
-        .verified-badge { color: var(--twitter-blue); font-size: 1.4rem; }
-        .profile-info .handle { color: #536471; margin: 3px 0 10px 0; font-size: 1rem; }
-        .profile-bio { font-size: 1.05rem; line-height: 1.6; color: #0f1419; max-width: 800px; }
-
-        .nav-tabs {
-            display: flex;
-            border-bottom: 2px solid var(--border-color);
-            background: #ffffff;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .tab-btn {
-            flex: 1;
-            background: none;
-            border: none;
-            padding: 18px 0;
             font-size: 1.1rem;
-            font-weight: bold;
-            color: #536471;
-            cursor: pointer;
-            transition: 0.2s;
-            position: relative;
+            object-fit: cover;
         }
 
-        .tab-btn.active { color: var(--twitter-dark); }
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 25%;
-            right: 25%;
-            height: 4px;
-            background-color: var(--twitter-blue);
-            border-radius: 2px;
+        .card-body {
+            padding: 25px;
         }
 
-        .tab-content { display: none; padding: 25px; }
-        .tab-content.active { display: block; }
-
-        .feed-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            margin-top: 15px;
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark-bg);
         }
 
-        .post-card {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-            text-align: right;
-            transition: 0.3s;
+        .card-desc {
+            color: var(--text-muted);
+            margin-bottom: 20px;
         }
-        .post-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
 
-        .post-card img { width: 100%; height: 230px; object-fit: cover; }
-        
-        .post-content { padding: 20px; }
-        .post-content h3 { margin: 0 0 10px 0; color: #1e3a8a; font-size: 1.3rem; }
-        .post-content p { margin: 0 0 15px 0; color: #475569; font-size: 0.95rem; line-height: 1.6; }
-        
         .price-tag {
-            font-weight: bold;
-            color: #e11d48;
-            font-size: 1.1rem;
-            background: #fff1f2;
-            padding: 6px 14px;
-            border-radius: 30px;
             display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.95rem;
         }
 
+        /* قسم التواصل والموقع */
         .contact-section {
-            background: #f8fafc;
-            padding: 35px 25px;
-            border-top: 1px solid var(--border-color);
-            text-align: right;
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 60px 20px;
+            margin-top: 40px;
         }
 
         .contact-grid {
+            max-width: 1300px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
+            gap: 40px;
         }
 
-        .contact-info-box h3, .contact-form-box h3 { color: var(--twitter-dark); margin-top: 0; }
-        
-        .phone-buttons { display: flex; flex-direction: column; gap: 10px; margin: 15px 0; }
-        .phone-link {
-            display: block;
-            padding: 12px;
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+        .contact-box h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #38bdf8;
             text-decoration: none;
-            color: var(--twitter-dark);
-            font-weight: bold;
-            transition: 0.2s;
-        }
-        .phone-link:hover { background: #f1f5f9; border-color: var(--twitter-blue); }
-
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; box-sizing: border-box; font-family: inherit;
-        }
-        .btn-submit {
-            background: var(--instagram-gradient); color: white; border: none; padding: 12px 30px; border-radius: 25px; font-weight: bold; cursor: pointer; font-size: 1rem;
         }
 
-        .floating-actions {
-            position: fixed; bottom: 20px; left: 20px; display: flex; gap: 10px; z-index: 999;
+        footer {
+            background-color: #090d16;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.95rem;
         }
-        .action-wa { background-color: #25D366; color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
-        .action-ai { background-color: var(--twitter-blue); color: white; padding: 12px 24px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(29,155,240,0.3); }
 
-        .ai-window {
-            position: fixed; bottom: 80px; left: 20px; width: 340px; height: 400px; background: white; border-radius: 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.15); display: none; flex-direction: column; z-index: 1000; border: 1px solid var(--border-color); overflow: hidden;
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            .nav-links { display: none; }
         }
-        .ai-header { background: var(--twitter-dark); color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; }
-        .ai-messages { flex: 1; padding: 15px; overflow-y: auto; background: #f7f9f9; }
-        .msg { margin-bottom: 12px; padding: 10px; border-radius: 12px; max-width: 85%; font-size: 0.9rem; }
-        .msg.bot { background: #eff3f4; }
-        .msg.user { background: var(--twitter-blue); color: white; margin-right: auto; text-align: left; }
-        .ai-input-area { display: flex; padding: 10px; border-top: 1px solid var(--border-color); background: #fff; }
-        .ai-input-area input { flex: 1; padding: 10px; border: 1px solid #cbd5e1; border-radius: 20px; outline: none; }
-        .ai-input-area button { background: var(--twitter-blue); color: white; border: none; padding: 0 15px; margin-right: 5px; border-radius: 20px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="site-wrapper">
-        <div class="profile-banner"></div>
-        
-        <div class="profile-header">
-            <div class="profile-avatar-wrapper">
-                <div class="profile-avatar">DP</div>
-                <div class="social-links-top">
-                    <a href="https://instagram.com" class="link-ig" target="_blank">إنستغرام 📸</a>
-                    <a href="https://twitter.com" class="link-tw" target="_blank">تويتر 🐦</a>
+    <!-- القائمة العلوية -->
+    <nav>
+        <div class="logo">Daoudi Print | مطبعة الداودي</div>
+        <div class="nav-links">
+            <a href="#services">خدماتنا وأسعارنا</a>
+            <a href="#contact">موقعنا وتواصل معنا</a>
+        </div>
+    </nav>
+
+    <!-- الواجهة الترحيبية -->
+    <header class="hero">
+        <h1>مطبعة الداودي - Daoudi Print</h1>
+        <p>وجهتكم الأولى للطباعة الرقمية، الإعلانية، والتغليف الفاخر بأعلى معايير الجودة والدقة في مراكش</p>
+        <div class="hero-btns">
+            <a href="https://wa.me" target="_blank" class="btn btn-whatsapp">📱 واتساب 1: 0661185606</a>
+            <a href="https://wa.me" target="_blank" class="btn btn-whatsapp">📱 واتساب 2: 0661103292</a>
+            <a href="https://instagram.com" target="_blank" class="btn btn-insta">📸 تابعنا على إنستغرام</a>
+        </div>
+    </header>
+
+    <!-- قسم الخدمات والمنتجات -->
+    <section id="services" class="container">
+        <h2 class="section-title">خدماتنا ومنتجاتنا المتميزة</h2>
+        <p class="section-subtitle">نقدم حلول طباعة متكاملة للشركات، المحلات التجارية، والمناسبات</p>
+
+        <div class="grid">
+            <!-- الخدمة 1 -->
+            <div class="card">
+                <!-- استبدل الرابط أدناه باسم صورتك مثل: cards.jpg -->
+                <img src="https://unsplash.com" alt="المطبوعات التجارية" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">المطبوعات التجارية</h3>
+                    <p class="card-desc">تصميم وطباعة بطاقات العمل (Cartes de visite)، المطويات الإعلانية (Flyers)، البروشورات، والفواتير المخصصة بجودة ورق ممتازة.</p>
+                    <span class="price-tag">ابتداءً من 150 درهم</span>
                 </div>
             </div>
-            <div class="profile-info">
-                <h1>مطبعة الداودي (Daoudi Print) <span class="verified-badge">✓</span></h1>
-                <div class="handle">@daoudiprint2026</div>
+
+            <!-- الخدمة 2 -->
+            <div class="card">
+                <!-- استبدل الرابط أدناه باسم صورتك مثل: banners.jpg -->
+                <img src="https://unsplash.com" alt="اللوحات واللافتات" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">اللوحات واللافتات الإعلانية</h3>
+                    <p class="card-desc">طباعة اللوحات الإشهارية الكبيرة (Bâches)، الملصقات الدعائية (Vinyle / Autocollant)، ولوحات واجهات المحلات المقاومة للعوامل الجوية.</p>
+                    <span class="price-tag">ابتداءً من 80 درهم / م²</span>
+                </div>
             </div>
-            <div class="profile-bio">
-                ✨ <b>جودة واحترافية في عالم الطباعة الرقمية والإعلانية بمراكش.</b> نلبي كافة طلباتكم التجارية والتسويقية بأحدث الآلات وبأفضل الأسعار المناسبة لمشروعك.
+
+            <!-- الخدمة 3 -->
+            <div class="card">
+                <!-- استبدل الرابط أدناه باسم صورتك مثل: packaging.jpg -->
+                <img src="https://unsplash.com" alt="التغليف والعلب الفاخرة" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">التغليف والعلب الفاخرة</h3>
+                    <p class="card-desc">تصنيع وطباعة علب التغليف الفاخرة، الأكياس الورقية المخصصة، وعلب الحلويات والمنتجات بتشطيبات راقية تعكس هوية علامتك التجارية.</p>
+                    <span class="price-tag">أسعار خاصة للكميات</span>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="nav-tabs">
-            <button class="tab-btn active" onclick="openTab('commercial')">المطبوعات التجارية</button>
-            <button class="tab-btn" onclick="openTab('signage')">اللوحات واللافتات</button>
-            <button class="tab-btn" onclick="openTab('packaging')">التغليف والعلب الفاخرة</button>
-        </div>
-
-        <div id="commercial" class="tab-content active">
-            <div class="feed-grid">
-                <div class="post-card">
-                    <img src="https://unsplash.com" alt="كارت فيزيت">
-                    <div class="post-content">
-                        <h3>كروت عمل فاخرة (Business Cards)</h3>
+    <!-- قسم التواصل والموقع -->
+    <section id="contact" class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-box">
+                <h3>📍 موقع المطبعة</h3>
+                <p class="contact-item">الحي الصناعي المسار، مراكش - المغرب</p>
