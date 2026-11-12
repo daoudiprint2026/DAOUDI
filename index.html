@@ -1,315 +1,520 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مطبعة الداودي | Daoudi Print - خدمات الطباعة الاحترافية</title>
-    <style>
-        :root {
-            --primary-blue: #1DA1F2;
-            --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1DA1F2 50%, #bc1888 100%);
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مطبعة الداودي | Daoudi Print - متجر الطباعة والتغليف بمراكش</title>
+  <meta name="description" content="متجر مطبعة الداودي الإلكتروني بمراكش: المطبوعات التجارية، اللوحات الإعلانية، والعلب الفاخرة مع سلة طلبات وتخصيص فوري للمواصفات.">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'system-ui', 'sans-serif'],
+            mono: ['Plus Jakarta Sans', 'monospace']
+          }
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light-bg);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* الشريط العلوي */
-        nav {
-            background-color: var(--card-bg);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: var(--insta-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            margin-right: 20px;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-
-        /* الواجهة الرئيسية العريضة */
-        .hero {
-            background: var(--header-gradient);
-            color: white;
-            text-align: center;
-            padding: 90px 20px;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 750px;
-            margin: 0 auto 30px auto;
-            opacity: 0.95;
-        }
-
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-        }
-
-        .btn-insta {
-            background: var(--insta-gradient);
-            color: white;
-        }
-
-        /* الحاوية الرئيسية العريضة */
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.3rem;
-            margin-bottom: 10px;
-            color: var(--dark-bg);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-        }
-
-        /* شبكة الخدمات والمنتجات */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            transition: transform 0.3s;
-            border-bottom: 4px solid var(--primary-blue);
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-        }
-
-        .card-img {
-            width: 100%;
-            height: 220px;
-            background-color: #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-weight: bold;
-            font-size: 1.1rem;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 25px;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--dark-bg);
-        }
-
-        .card-desc {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .price-tag {
-            display: inline-block;
-            background: #e0f2fe;
-            color: #0369a1;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-
-        /* قسم التواصل والموقع */
-        .contact-section {
-            background-color: var(--dark-bg);
-            color: white;
-            padding: 60px 20px;
-            margin-top: 40px;
-        }
-
-        .contact-grid {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .contact-box h3 {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
-        }
-
-        .contact-item {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .contact-item a {
-            color: #38bdf8;
-            text-decoration: none;
-        }
-
-        footer {
-            background-color: #090d16;
-            color: #94a3b8;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.95rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.4rem; }
-            .nav-links { display: none; }
-        }
-    </style>
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background-color: #090d16;
+      color: #f1f5f9;
+    }
+    .insta-gradient {
+      background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+    }
+    .insta-neon {
+      background: linear-gradient(135deg, #9333ea 0%, #ec4899 50%, #f97316 100%);
+    }
+    .insta-text {
+      background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .card-glow {
+      box-shadow: 0 0 25px -8px rgba(236, 72, 153, 0.15);
+      transition: all 0.3s ease;
+    }
+    .card-glow:hover {
+      box-shadow: 0 0 35px -5px rgba(249, 115, 22, 0.25);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-[#090d16] text-slate-100 antialiased selection:bg-pink-600 selection:text-white">
 
-    <!-- القائمة العلوية -->
-    <nav>
-        <div class="logo">Daoudi Print | مطبعة الداودي</div>
-        <div class="nav-links">
-            <a href="#services">خدماتنا وأسعارنا</a>
-            <a href="#contact">موقعنا وتواصل معنا</a>
+  <!-- الشريط العلوي -->
+  <div class="bg-[#05080f] text-slate-400 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-[11px] sm:text-xs">
+      <div class="flex items-center gap-3">
+        <span class="text-pink-500">📍</span>
+        <span class="text-slate-300 font-medium">الحي الصناعي مسار، مراكش</span>
+        <span class="text-slate-700">|</span>
+        <span class="hidden sm:inline">أوقات العمل والإنتاج: 8:30 ص - 7:30 م (الإثنين - السبت)</span>
+      </div>
+      <div class="flex items-center gap-4 font-semibold">
+        <a href="https://wa.me/212661185606" target="_blank" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+          <span>💬 واتساب 1:</span> <span dir="ltr">0661185606</span>
+        </a>
+        <span class="text-slate-700">/</span>
+        <a href="https://wa.me/212661103292" target="_blank" class="text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
+          <span>واتساب 2:</span> <span dir="ltr">0661103292</span>
+        </a>
+        <span class="text-slate-700">|</span>
+        <a href="https://instagram.com" target="_blank" class="text-pink-400 hover:text-pink-300">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- رأس الصفحة -->
+  <header class="sticky top-0 z-40 bg-[#090d16]/95 backdrop-blur-md border-b border-slate-800 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-3 shrink-0">
+        <div class="w-10 h-10 rounded-xl insta-neon flex items-center justify-center text-white font-bold text-lg shadow-lg">
+          🖨️
         </div>
-    </nav>
-
-    <!-- الواجهة الترحيبية -->
-    <header class="hero">
-        <h1>مطبعة الداودي - Daoudi Print</h1>
-        <p>وجهتكم الأولى للطباعة الرقمية، الإعلانية، والتغليف الفاخر بأعلى معايير الجودة والدقة في مراكش</p>
-        <div class="hero-btns">
-            <a href="https://wa.me" target="_blank" class="btn btn-whatsapp">📱 واتساب 1: 0661185606</a>
-            <a href="https://wa.me" target="_blank" class="btn btn-whatsapp">📱 واتساب 2: 0661103292</a>
-            <a href="https://instagram.com" target="_blank" class="btn btn-insta">📸 تابعنا على إنستغرام</a>
+        <div class="flex flex-col text-right">
+          <div class="text-xl sm:text-2xl font-black text-white flex items-center gap-1.5">
+            <span>مطبعة الداودي</span>
+            <span class="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded-md bg-pink-500/10 text-pink-400 border border-pink-500/20">STORE</span>
+          </div>
+          <span class="text-[10px] font-bold text-slate-400 font-mono">DAOUDI PRINT · MARRAKECH</span>
         </div>
-    </header>
+      </a>
 
-    <!-- قسم الخدمات والمنتجات -->
-    <section id="services" class="container">
-        <h2 class="section-title">خدماتنا ومنتجاتنا المتميزة</h2>
-        <p class="section-subtitle">نقدم حلول طباعة متكاملة للشركات، المحلات التجارية، والمناسبات</p>
+      <!-- روابط التنقل -->
+      <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold text-slate-300">
+        <a href="#catalog" class="hover:text-pink-400 transition-colors">كتالوج المنتجات</a>
+        <a href="#specs" class="hover:text-pink-400 transition-colors">ماكينات ومواصفات المصنع</a>
+        <a href="#contact" class="hover:text-pink-400 transition-colors">موقع المحل والتواصل</a>
+      </nav>
 
-        <div class="grid">
-            <!-- الخدمة 1 -->
-            <div class="card">
-                <!-- استبدل الرابط أدناه باسم صورتك مثل: cards.jpg -->
-                <img src="https://unsplash.com" alt="المطبوعات التجارية" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">المطبوعات التجارية</h3>
-                    <p class="card-desc">تصميم وطباعة بطاقات العمل (Cartes de visite)، المطويات الإعلانية (Flyers)، البروشورات، والفواتير المخصصة بجودة ورق ممتازة.</p>
-                    <span class="price-tag">ابتداءً من 150 درهم</span>
-                </div>
+      <!-- زر السلة -->
+      <button onclick="toggleCart()" class="flex items-center gap-2.5 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-pink-500 rounded-xl transition-all cursor-pointer">
+        <span class="text-lg">🛍️</span>
+        <div class="text-right hidden sm:flex flex-col">
+          <span class="text-[10px] text-slate-400 font-medium">سلة الطلبات</span>
+          <span id="nav-cart-total" class="text-xs font-bold text-white font-mono">0 د.م.</span>
+        </div>
+        <span id="nav-cart-count" class="w-5 h-5 rounded-full insta-neon text-white text-[11px] font-black flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- الواجهة الرئيسية مع حاسبة التخصيص الفورية -->
+  <section class="relative pt-8 pb-16 bg-[#090d16] border-b border-slate-800 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-6 text-right">
+          <div class="inline-flex items-center gap-2 text-xs font-mono text-slate-300 bg-slate-900 border border-slate-800 rounded-full py-1 px-4">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>الورشة المركزية بالحي الصناعي مسار · مراكش</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+            المنصة التقنية للطباعة والتغليف في <br>
+            <span class="insta-text">مطبعة الداودي</span>
+          </h1>
+
+          <p class="text-base text-slate-400 leading-relaxed max-w-xl">
+            متجر إلكتروني عالي الدقة لطلب كروت العمل، الفلايرات، الفواتير، لافتات المحلات ثلاثية الأبعاد، والعلب الكرتونية الفاخرة. حدد مواصفاتك وأرسل طلبك بنقرة واحدة عبر الواتساب.
+          </p>
+
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href="#catalog" class="px-6 py-3.5 text-sm font-bold text-white insta-neon rounded-xl shadow-lg hover:opacity-95 transition-all">
+              تصفح كتالوج المنتجات والأسعار ↓
+            </a>
+            <a href="https://wa.me/212661185606?text=مرحبا%20مطبعة%20الداودي،%20أود%20طلب%20مطبوعات" target="_blank" class="px-5 py-3.5 text-sm font-bold text-emerald-400 bg-slate-900 border border-emerald-500/40 rounded-xl hover:bg-emerald-500/10 transition-all flex items-center gap-2">
+              <span>💬 واتساب مباشر:</span>
+              <span dir="ltr" class="font-mono text-white font-bold">0661185606</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- بطاقة التخصيص الفوري في الواجهة -->
+        <div class="lg:col-span-5">
+          <div class="bg-[#0f172a] rounded-3xl p-6 border border-slate-800 card-glow">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-800 mb-4 text-xs font-mono">
+              <span class="px-2 py-0.5 rounded bg-pink-500/10 text-pink-400 border border-pink-500/30">SKU: DP-PRN-01</span>
+              <span class="text-emerald-400 font-bold">● جاهز للطباعة الفورية</span>
             </div>
 
-            <!-- الخدمة 2 -->
-            <div class="card">
-                <!-- استبدل الرابط أدناه باسم صورتك مثل: banners.jpg -->
-                <img src="https://unsplash.com" alt="اللوحات واللافتات" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">اللوحات واللافتات الإعلانية</h3>
-                    <p class="card-desc">طباعة اللوحات الإشهارية الكبيرة (Bâches)، الملصقات الدعائية (Vinyle / Autocollant)، ولوحات واجهات المحلات المقاومة للعوامل الجوية.</p>
-                    <span class="price-tag">ابتداءً من 80 درهم / م²</span>
+            <h3 class="text-lg font-bold text-white mb-1">كروت العمل الفاخرة (Pro Business Cards)</h3>
+            <p class="text-xs text-slate-400 mb-4">طباعة أوفست 2400 DPI على كوشيه 350g مع سلوفان مخملي وتذهيب.</p>
+
+            <div class="space-y-3 text-xs">
+              <div>
+                <label class="block font-bold text-slate-300 mb-1">الكمية:</label>
+                <div class="grid grid-cols-4 gap-1.5 font-mono">
+                  <button type="button" onclick="setHeroQty(500, 110)" class="hero-qty-btn py-1.5 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg hover:border-slate-700">500</button>
+                  <button type="button" onclick="setHeroQty(1000, 150)" class="hero-qty-btn py-1.5 bg-pink-600 text-white border border-pink-500 rounded-lg font-bold">1000</button>
+                  <button type="button" onclick="setHeroQty(2500, 330)" class="hero-qty-btn py-1.5 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg hover:border-slate-700">2500</button>
+                  <button type="button" onclick="setHeroQty(5000, 600)" class="hero-qty-btn py-1.5 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg hover:border-slate-700">5000</button>
                 </div>
+              </div>
+
+              <div>
+                <label class="block font-bold text-slate-300 mb-1">التشطيب:</label>
+                <select id="hero-finish" onchange="updateHeroPrice()" class="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-slate-200">
+                  <option value="50">سلوفان ناعم حريري Soft Touch (+50 د.م.)</option>
+                  <option value="120">سلوفان ناعم + تذهيب حراري ذهبي (+120 د.م.)</option>
+                  <option value="170">تذهيب ذهبي + ورنيش بارز UV 3D (+170 د.م.)</option>
+                  <option value="0">سلوفان لامع كلاسيكي</option>
+                </select>
+              </div>
             </div>
 
-            <!-- الخدمة 3 -->
-            <div class="card">
-                <!-- استبدل الرابط أدناه باسم صورتك مثل: packaging.jpg -->
-                <img src="https://unsplash.com" alt="التغليف والعلب الفاخرة" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-title">التغليف والعلب الفاخرة</h3>
-                    <p class="card-desc">تصنيع وطباعة علب التغليف الفاخرة، الأكياس الورقية المخصصة، وعلب الحلويات والمنتجات بتشطيبات راقية تعكس هوية علامتك التجارية.</p>
-                    <span class="price-tag">أسعار خاصة للكميات</span>
-                </div>
+            <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-500 font-mono uppercase block">المجموع التقديري:</span>
+                <span id="hero-total" class="text-2xl font-black text-white font-mono insta-text">200 د.م.</span>
+              </div>
+              <button onclick="addHeroToCart()" class="py-2.5 px-5 insta-neon text-white font-bold text-xs rounded-xl hover:opacity-95 transition-all shadow-md">
+                + أضف للسلة
+              </button>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- قسم التواصل والموقع -->
-    <section id="contact" class="contact-section">
-        <div class="contact-grid">
-            <div class="contact-box">
-                <h3>📍 موقع المطبعة</h3>
-                <p class="contact-item">الحي الصناعي المسار، مراكش - المغرب</p>
+  <!-- كتالوج المنتجات -->
+  <section id="catalog" class="py-16 bg-[#090d16]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-4 border-b border-slate-800">
+        <div>
+          <span class="text-xs font-mono text-pink-400 font-bold block mb-1">CATALOG & PRICING</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">كتالوج المنتجات والأسعار التقديرية</h2>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="filterCat('all')" class="cat-tab px-3.5 py-1.5 rounded-lg text-xs font-bold bg-pink-600 text-white">الكل</button>
+          <button onclick="filterCat('commercial')" class="cat-tab px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-400 hover:text-white">المطبوعات التجارية</button>
+          <button onclick="filterCat('signage')" class="cat-tab px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-400 hover:text-white">اللوحات واللافتات</button>
+          <button onclick="filterCat('packaging')" class="cat-tab px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-slate-400 hover:text-white">العلب والتغليف</button>
+        </div>
+      </div>
+
+      <!-- شبكة المنتجات -->
+      <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- يتم ملؤها ديناميكياً عبر الجافاسكريبت -->
+      </div>
+    </div>
+  </section>
+
+  <!-- مواصفات الماكينات (بديل الخبرة) -->
+  <section id="specs" class="py-16 bg-[#060911] border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="text-center max-w-2xl mx-auto space-y-3 mb-10">
+        <span class="text-xs font-mono text-sky-400 bg-sky-950/60 border border-sky-800 px-3 py-1 rounded-full">MACHINERY & CALIBRATION</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">المواصفات التقنية لماكينات مطبعة الداودي</h2>
+        <p class="text-xs text-slate-400">تجهيزات هندسية صناعية متطورة تضمن دقة الألوان بنسبة 100% وتسليماً سريعاً داخل مراكش والمغرب.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-right">
+        <div class="bg-[#0f172a] p-5 rounded-2xl border border-slate-800 space-y-2">
+          <span class="text-xs font-mono text-pink-400 font-bold">SYS-01 · OFFSET</span>
+          <h3 class="font-bold text-white text-sm">ماكينة Heidelberg Speedmaster XL</h3>
+          <p class="text-xs text-slate-400">طباعة 15,000 ورقة في الساعة بدقة 2400 DPI مع نظام معايرة ألوان Delta-E &lt; 1.5.</p>
+        </div>
+        <div class="bg-[#0f172a] p-5 rounded-2xl border border-slate-800 space-y-2">
+          <span class="text-xs font-mono text-sky-400 font-bold">SYS-02 · WIDE FORMAT</span>
+          <h3 class="font-bold text-white text-sm">ماكينة Roland TrueVIS VG3</h3>
+          <p class="text-xs text-slate-400">أحبار UV أصلية مقاومة للشمس والعوامل الجوية لـ 3 سنوات للبانرات والسيارات.</p>
+        </div>
+        <div class="bg-[#0f172a] p-5 rounded-2xl border border-slate-800 space-y-2">
+          <span class="text-xs font-mono text-emerald-400 font-bold">SYS-03 · RIGID BOXES</span>
+          <h3 class="font-bold text-white text-sm">خط تصنيع العلب الصلبة Kolbus</h3>
+          <p class="text-xs text-slate-400">إنتاج علب الهدايا والزعفران الصلبة المغناطيسية بدقة قص وتجميع 0.1 مم.</p>
+        </div>
+        <div class="bg-[#0f172a] p-5 rounded-2xl border border-slate-800 space-y-2">
+          <span class="text-xs font-mono text-orange-400 font-bold">SYS-04 · HOT FOILING</span>
+          <h3 class="font-bold text-white text-sm">التذهيب الحراري والورنيش 3D</h3>
+          <p class="text-xs text-slate-400">تذهيب حراري حتى 180°C بالذهب والفضة مع ورنيش موضعي بارز عالي الفخامة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- التذييل والموقع والتواصل -->
+  <footer id="contact" class="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
+        <div class="lg:col-span-5 space-y-5 text-right">
+          <div class="text-2xl font-black text-white">مطبعة الداودي · Daoudi Print</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            وجهتكم المعتمدة في مراكش للطباعة الأوفست والرقمية الفاخرة، تصنيع اللوحات الإعلانية الضخمة، والعلب الكرتونية الراقية في الحي الصناعي مسار.
+          </p>
+          <div class="space-y-2.5">
+            <a href="https://wa.me/212661185606" target="_blank" class="flex items-center justify-between p-3 bg-slate-900 border border-slate-800 rounded-xl hover:border-emerald-500 text-xs">
+              <span class="text-slate-300">واتساب ومبيعات 1:</span>
+              <span dir="ltr" class="font-mono font-bold text-emerald-400">0661185606</span>
+            </a>
+            <a href="https://wa.me/212661103292" target="_blank" class="flex items-center justify-between p-3 bg-slate-900 border border-slate-800 rounded-xl hover:border-emerald-500 text-xs">
+              <span class="text-slate-300">واتساب ومبيعات 2:</span>
+              <span dir="ltr" class="font-mono font-bold text-emerald-400">0661103292</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="flex items-center justify-between p-3 bg-slate-900 border border-slate-800 rounded-xl hover:border-pink-500 text-xs">
+              <span class="text-slate-300">تابعونا على إنستغرام:</span>
+              <span dir="ltr" class="font-mono font-bold text-pink-400">@daoudiprint</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 bg-slate-900 p-6 rounded-2xl border border-slate-800 space-y-4 text-right">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-white text-base">📍 موقع المطبعة والورشة</h3>
+              <p class="text-xs text-slate-400">الحي الصناعي مسار، مراكش - المملكة المغربية</p>
+            </div>
+            <a href="https://maps.google.com/?q=الحي+الصناعي+مسار+مراكش" target="_blank" class="px-4 py-2 bg-white text-slate-950 font-bold text-xs rounded-xl hover:bg-slate-200">
+              فتح في خرائط جوجل ↗
+            </a>
+          </div>
+          <div class="p-4 bg-slate-950 rounded-xl border border-slate-800 text-xs text-slate-400 space-y-1">
+            <div>ساعات العمل: من الإثنين إلى السبت، 8:30 صباحاً إلى 7:30 مساءً</div>
+            <div>البريد الإلكتروني التجاري: <span class="font-mono text-slate-200">commercial@daoudiprint.ma</span></div>
+            <div>توصيل مباشر لكافة أحياء مراكش وشحن آمن لجميع مدن المغرب</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 text-center text-xs text-slate-500">
+        جميع الحقوق محفوظة © 2026 مطبعة الداودي (Daoudi Print) · الحي الصناعي مسار، مراكش
+      </div>
+    </div>
+  </footer>
+
+  <!-- سلة المشتريات المنبثقة -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-xs hidden flex justify-end">
+    <div class="w-full max-w-md bg-[#0c121e] h-full flex flex-col border-r border-slate-800 p-6 text-right">
+      <div class="flex justify-between items-center pb-4 border-b border-slate-800">
+        <h3 class="font-bold text-white text-lg">🛍️ سلة طلبات المطبوعات</h3>
+        <button onclick="toggleCart()" class="text-slate-400 hover:text-white p-1">✕</button>
+      </div>
+
+      <div id="cart-items-container" class="flex-1 overflow-y-auto py-4 space-y-3">
+        <!-- العناصر في السلة -->
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 space-y-3">
+        <div class="flex justify-between text-sm font-bold">
+          <span class="text-slate-400">المجموع التقديري:</span>
+          <span id="cart-drawer-total" class="text-white font-mono insta-text text-xl">0 د.م.</span>
+        </div>
+
+        <div>
+          <label class="block text-xs text-slate-400 mb-1">الاسم ورقم الهاتف لإتمام الطلب:</label>
+          <input id="client-name" type="text" placeholder="الاسم الكامل" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white mb-2">
+          <input id="client-phone" type="tel" placeholder="رقم الهاتف أو الواتساب" class="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white">
+        </div>
+
+        <button onclick="sendOrderViaWhatsApp()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2">
+          <span>💬 إرسال الطلب فوراً عبر الواتساب (0661185606)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- جافاسكريبت التشغيل والتفاعل -->
+  <script>
+    const PRODUCTS = [
+      {
+        id: 'p1', sku: 'DP-PRN-01', cat: 'commercial', name: 'كروت العمل الفاخرة (Cartes de Visite Pro)',
+        desc: 'ورق كوشيه 350g فائق البياض مع سلوفان ناعم وتذهيب حراري بارز.', price: 150, unit: '1,000 كرت'
+      },
+      {
+        id: 'p2', sku: 'DP-PRN-02', cat: 'commercial', name: 'المطويات والمنشورات الإعلانية (Flyers A5)',
+        desc: 'ورق كوشيه 135g أو 170g طباعة أوفست ملونة وجهين بدقة عالية.', price: 350, unit: '1,000 مطوية'
+      },
+      {
+        id: 'p3', sku: 'DP-PRN-03', cat: 'commercial', name: 'سندات الفواتير والدفاتر المكربنة (Factures)',
+        desc: 'دفاتر محاسبية ذاتية النسخ 2 أو 3 نسخ مع ترقيم متسلسل.', price: 260, unit: '10 دفاتر (50 مجموعة)'
+      },
+      {
+        id: 'p4', sku: 'DP-SIG-01', cat: 'signage', name: 'حامل الرول آب والبانر الإعلاني (Roll-up Pro)',
+        desc: 'هيكل ألومنيوم مع قماش 510g وأحبار UV مقاومة للشمس مع حقيبة.', price: 290, unit: 'قطعة واحدة جاهزة'
+      },
+      {
+        id: 'p5', sku: 'DP-SIG-02', cat: 'signage', name: 'حروف بارزة مضيئة 3D لواجهات المحلات',
+        desc: 'أكريليك وستانلس ستيل ذهبي مرآة مع وحدات LED IP67 موفرة.', price: 1100, unit: 'للمتر الطولي'
+      },
+      {
+        id: 'p6', sku: 'DP-BOX-01', cat: 'packaging', name: 'العلب الكرتونية الصلبة الفاخرة (Rigid Boxes)',
+        desc: 'كرتون مقوى 1500g مكسو بجلد ناعم وإغلاق مغناطيسي وتذهيب.', price: 28, unit: 'للعلبة (الحد الأدنى 100)'
+      },
+      {
+        id: 'p7', sku: 'DP-BOX-02', cat: 'packaging', name: 'علب الوجبات والتغليف الغذائي البيئي (Kraft)',
+        desc: 'كرتون كرافت معتمد غذائياً مانع لتسرب الزيوت للمطاعم والحلويات.', price: 1.9, unit: 'للعلبة (الحد الأدنى 1000)'
+      },
+      {
+        id: 'p8', sku: 'DP-BOX-03', cat: 'packaging', name: 'أكياس التسوق الورقية الفاخرة (Luxury Bags)',
+        desc: 'أكياس ورقية بمقابض ساتان حريري وقاعدة معززة للمتاجر.', price: 3.8, unit: 'للكيس (الحد الأدنى 500)'
+      }
+    ];
+
+    let cart = [];
+    let heroQty = 1000;
+    let heroBase = 150;
+
+    function renderProducts(category = 'all') {
+      const grid = document.getElementById('products-grid');
+      const filtered = category === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === category);
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="bg-[#0f172a] rounded-2xl p-5 border border-slate-800 card-glow flex flex-col justify-between text-right space-y-4">
+          <div>
+            <div class="flex justify-between items-center text-xs font-mono mb-2">
+              <span class="text-pink-400 font-bold">${p.sku}</span>
+              <span class="text-slate-400">${p.unit}</span>
+            </div>
+            <h3 class="font-bold text-white text-base">${p.name}</h3>
+            <p class="text-xs text-slate-400 mt-1">${p.desc}</p>
+          </div>
+          <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-500 font-mono block">السعر التقديري:</span>
+              <span class="text-lg font-black text-white font-mono insta-text">${p.price} د.م.</span>
+            </div>
+            <button onclick="addToCart('${p.id}')" class="py-2 px-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-pink-500 text-white text-xs font-bold rounded-xl transition-all">
+              + أضف للسلة
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCat(cat) {
+      document.querySelectorAll('.cat-tab').forEach(btn => {
+        btn.classList.remove('bg-pink-600', 'text-white');
+        btn.classList.add('bg-slate-900', 'text-slate-400');
+      });
+      event.target.classList.add('bg-pink-600', 'text-white');
+      event.target.classList.remove('bg-slate-900', 'text-slate-400');
+      renderProducts(cat);
+    }
+
+    function setHeroQty(qty, price) {
+      heroQty = qty;
+      heroBase = price;
+      document.querySelectorAll('.hero-qty-btn').forEach(b => {
+        b.classList.remove('bg-pink-600', 'text-white', 'font-bold');
+        b.classList.add('bg-slate-900', 'text-slate-300');
+      });
+      event.target.classList.add('bg-pink-600', 'text-white', 'font-bold');
+      updateHeroPrice();
+    }
+
+    function updateHeroPrice() {
+      const finishDelta = Number(document.getElementById('hero-finish').value);
+      const total = heroBase + finishDelta;
+      document.getElementById('hero-total').innerText = total + ' د.م.';
+    }
+
+    function addHeroToCart() {
+      const finishText = document.getElementById('hero-finish').options[document.getElementById('hero-finish').selectedIndex].text;
+      const finishDelta = Number(document.getElementById('hero-finish').value);
+      const total = heroBase + finishDelta;
+
+      cart.push({
+        id: 'hero-' + Date.now(),
+        name: 'كروت العمل الفاخرة',
+        sku: 'DP-PRN-01',
+        qty: heroQty + ' كرت',
+        desc: finishText,
+        price: total
+      });
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function addToCart(productId) {
+      const p = PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+      cart.push({
+        id: 'cart-' + Date.now(),
+        name: p.name,
+        sku: p.sku,
+        qty: p.unit,
+        desc: 'المواصفات القياسية',
+        price: p.price
+      });
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function removeCartItem(idx) {
+      cart.splice(idx, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const total = cart.reduce((acc, item) => acc + item.price, 0);
+      document.getElementById('nav-cart-count').innerText = cart.length;
+      document.getElementById('nav-cart-total').innerText = total.toLocaleString() + ' د.م.';
+      document.getElementById('cart-drawer-total').innerText = total.toLocaleString() + ' د.م.';
+
+      const container = document.getElementById('cart-items-container');
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="text-center text-slate-500 py-8 text-xs">سلة الطلبات فارغة</p>';
+      } else {
+        container.innerHTML = cart.map((item, idx) => `
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs flex justify-between items-start">
+            <div>
+              <span class="text-[10px] font-mono text-pink-400 font-bold">${item.sku}</span>
+              <h4 class="font-bold text-white mt-0.5">${item.name}</h4>
+              <p class="text-[11px] text-slate-400">${item.qty} · ${item.desc}</p>
+            </div>
+            <div class="text-left">
+              <span class="font-bold text-white font-mono block">${item.price} د.م.</span>
+              <button onclick="removeCartItem(${idx})" class="text-rose-400 hover:text-rose-300 text-[10px] mt-1">حذف</button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function toggleCart(forceOpen = null) {
+      const drawer = document.getElementById('cart-drawer');
+      if (forceOpen === true) {
+        drawer.classList.remove('hidden');
+      } else if (forceOpen === false) {
+        drawer.classList.add('hidden');
+      } else {
+        drawer.classList.toggle('hidden');
+      }
+    }
+
+    function sendOrderViaWhatsApp() {
+      if (cart.length === 0) {
+        alert('السلة فارغة، يرجى إضافة منتجات أولاً.');
+        return;
+      }
+      const name = document.getElementById('client-name').value || 'عميل المتجر';
+      const phone = document.getElementById('client-phone').value || '';
+      const total = cart.reduce((acc, item) => acc + item.price, 0);
+
+      let msg = `*طلب شراء جديد من متجر مطبعة الداودي*\n`;
+      msg += `الاسم: ${name}\nالهاتف: ${phone}\n-----------------\n`;
+      cart.forEach((c, i) => {
+        msg += `${i + 1}. *${c.name}* (${c.sku})\n   الكمية: ${c.qty}\n   السعر: ${c.price} د.م.\n`;
+      });
+      msg += `-----------------\n*المجموع التقديري: ${total.toLocaleString()} درهم مغربي*\nأرجو تأكيد موعد الاستلام. شكراً.`;
+
+      window.open(`https://wa.me/212661185606?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // تشغيل الصفحة عند التحميل
+    renderProducts();
+    updateCartUI();
+  </script>
+</body>
+</html>
